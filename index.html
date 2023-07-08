@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="简洁而强大的ChatGPT应用">
+    <meta name="description" content="Fast & Powerful LLM Webapp">
     <meta name="theme-color" content="#edeff2">
     <meta name="apple-mobile-web-app-status-bar-style" content="#edeff2">
     <meta name="msapplication-TileColor" content="#edeff2">
@@ -2263,8 +2263,8 @@
                 </div>
                 <div class="divider"></div>
                 <div class="links">
-                    <a href="https://github.com/xqdoo00o/chatgpt-web" target="_blank"
-                        rel="noopener noreferrer">Github</a>
+                    <a href="https://demo.renj.dev" target="_blank"
+                        rel="noopener noreferrer">Reonjy</a>
                 </div>
             </div>
         </nav>
@@ -2304,8 +2304,11 @@
                                 <option value="gpt-3.5-turbo">GPT-3.5</option>
                                 <option value="gpt-3.5-turbo-16k">GPT-3.5-16K</option>
                                 <option value="gpt-4">GPT-4</option>
-                                <option value="gpt-4-browsing" data-i18n-key="gptBrowsing"></option>
-                                <option value="gpt-4-32k">GPT-4-32k</option>
+                                <option value="claude-instant">Claude</option>
+                                <option value="claude+">Claude+</option>
+                                <option value="claude-instant-100k">Claude-100K</option>
+                                <option value="bard">Bard</option>
+                                <option value="chat-bison-001">GooglePaLM 2</option>
                             </select>
                         </div>
                         <div>
@@ -2330,7 +2333,7 @@
                                 </div>
                             </div>
                             <textarea class="inputTextClass areaTextClass" autocomplete="off"
-                                data-i18n-place="assistantText" placeholder id="systemInput"></textarea>
+                                data-i18n-place="assistantText" placeholder id="systemInput" value="You are ChatGPT, a large language model trained by OpenAI. Carefully heed the user's instructions. Respond using markdown."></textarea>
                         </div>
                         <div>
                             <span data-i18n-key="nature"></span>
@@ -2674,7 +2677,7 @@
                         <div class="setContent setNotNormalFlow">
                             <div class="setTitle" data-i18n-key="aiEndpoint"></div>
                             <div class="setDetail inputDetail" style="position: relative;">
-                                <input class="inputTextClass" placeholder="https://api.openai.com/" autocomplete="off"
+                                <input class="inputTextClass" placeholder="https://api.openai.com/" autocomplete="off" value="https://free.churchless.tech"
                                     id="apiHostInput" />
                                 <div id="apiSelect" tabindex="-1" style="display: none;"></div>
                             </div>
@@ -2884,7 +2887,7 @@
             }
         }
         const initLang = () => {
-            let localLang = localStorage.getItem("UILang") || "zh";
+            let localLang = localStorage.getItem("UILang") || "en";
             let isInit = locale === void 0;
             if (locale !== localLang) {
                 locale = localLang;
@@ -2976,7 +2979,7 @@
                 "askTip": "Type message here",
                 "clearChat": "Clear chat",
                 "general": "General",
-                "hotkey": "Hotkey",
+                "hotkey": "Hotkeys",
                 "data": "Data",
                 "theme": "Theme",
                 "darkTheme": "Dark",
@@ -2986,7 +2989,7 @@
                 "customDarkTheme": "Custom dark theme",
                 "startDark": "Start",
                 "endDark": "End",
-                "aiEndpoint": "OpenAI endpoint",
+                "aiEndpoint": "OpenAI Endpoint",
                 "aiKey": "OpenAI API key",
                 "checkBill": "Check bill",
                 "used": "Used ",
@@ -3038,7 +3041,7 @@
                 "customDarkTip": "Start time and end time cannot be the same!",
                 "timeoutTip": "Request timeout, please try again later!",
                 "largeReqTip": "Request is too large, please delete part of the chat or cancel continuous chat!",
-                "noModelPerTip": "Not permission to use this model, please choose another GPT model!",
+                "noModelPerTip": "No permission to use this model, please choose another GPT model!",
                 "apiRateTip": "Trigger API call rate limit, please try again later!",
                 "exceedLimitTip": "API usage exceeded limit, please check your bill!",
                 "badGateTip": "Gateway error or timeout, please try again later!",
@@ -3453,7 +3456,7 @@
                 };
                 let localLangIdx = 0;
                 let localDiaIdx = 0;
-                let localRecLang = localStorage.getItem("voiceRecLang") || "cmn-Hans-CN";
+                let localRecLang = localStorage.getItem("voiceRecLang") || "en-US";
                 if (localRecLang) {
                     let localIndex = langs.findIndex(item => {
                         let diaIdx = item.findIndex(lang => {return lang instanceof Array && lang[0] === localRecLang});
